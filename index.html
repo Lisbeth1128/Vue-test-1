@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue</title>
+    <style>
+        .transGreen {
+            background-color: green;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div id = "app">
+        {{ message | newText}}
+        <hr>
+        <span v-text="message"></span>
+        <hr>
+        <span v-html="apple"></span>
+        <hr>
+        <div v-bind:class="className"></div>
+        <hr>
+        <button v-on:click="count">{{ countNum }}</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello Vue!',
+                apple: '<div style="color: red;">苹果<div>',
+                className: 'transGreen',
+                countNum: 0
+            },
+            methods: {
+                count: function(){
+                    this.countNum = this.countNum + 1
+                }
+            },
+            filters: {
+                newText: function(value){
+                    return '-- ' + value + ' --'
+                }
+            }
+        })
+    </script>
+</body>
+</html>
